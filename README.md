@@ -1,6 +1,6 @@
 # To-do List Full-stack Assignment
 
-This project is an internship-ready full-stack task management app. It includes a polished Next.js interface, a Spring Boot REST API, PostgreSQL persistence, Docker Compose, and backend unit tests.
+This project is a full-stack task management app. It includes a polished Next.js interface, a Spring Boot REST API, PostgreSQL persistence, Docker Compose, and backend unit tests.
 
 ## Architecture
 
@@ -19,6 +19,24 @@ This project is an internship-ready full-stack task management app. It includes 
 - Create projects with color and description metadata.
 - Store task priority, due date, project, and completion state through the API.
 - Validate invalid form data on the backend and show field errors in the UI.
+
+## Screenshots
+
+### Active Tasks
+
+![Active task list](docs/images/all-tasks-active.png)
+
+### Completed Tasks
+
+![Completed task list](docs/images/completed-tasks.png)
+
+### Project Filter
+
+![Project task view](docs/images/project-filter.png)
+
+### New Task Modal
+
+![New task modal](docs/images/new-task-modal.png)
 
 ## Quick Start With Docker Compose
 
