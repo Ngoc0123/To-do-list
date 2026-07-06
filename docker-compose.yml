@@ -1,0 +1,43 @@
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: task-postgres-db
+    environment:
+      POSTGRES_USER: dev_user
+      POSTGRES_PASSWORD: dev_password
+      POSTGRES_DB: todo_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dev_user -d todo_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend-api:
+    build: ./backend
+    container_name: task-backend-api
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/todo_db
+      SPRING_DATASOURCE_USERNAME: dev_user
+      SPRING_DATASOURCE_PASSWORD: dev_password
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+
+  frontend-app:
+    build: ./frontend
+    container_name: task-frontend-app
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080/api/v1
+    depends_on:
+      - backend-api
+
+volumes:
+  pgdata:

@@ -1,0 +1,15 @@
+.DS_Store
+
+# Java
+backend/target/
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/playwright-report/
+frontend/test-results/
+
+# Local environment files
+.env
+.env.*
